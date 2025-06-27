@@ -1,5 +1,5 @@
 import { github,linkedin } from "../assets";
-import {Tilt} from "react-tilt";
+import TiltWrapper from "../constants/TiltWrapper";
 function Footer() {
   return (
     <footer className="bg-primary flex flex-col md:flex-row items-center justify-center md:justify-around py-6 gap-4 flex-wrap shadow-lg shadow-white">
@@ -25,7 +25,7 @@ function Footer() {
         </p>
       </div>
       <div className="flex gap-4">
-        <Tilt
+        <TiltWrapper
           options={{
             max: 50,
             scale: 1,
@@ -40,8 +40,8 @@ function Footer() {
           >
             <img src={github} alt="github" className="w-10 h-10" />
           </a>
-        </Tilt>
-        <Tilt
+        </TiltWrapper>
+        <TiltWrapper
           options={{
             max: 50,
             scale: 1,
@@ -55,15 +55,15 @@ function Footer() {
           >
             <img src={linkedin} alt="linkedin" className="w-10 h-10" />
           </a>
-        </Tilt>
-        <Tilt
+        </TiltWrapper>
+        <TiltWrapper
           options={{
             max: 50,
             scale: 1,
             speed: 450,
           }}
         >
-        </Tilt>
+        </TiltWrapper>
       </div>
       <p className="text-sm text-secondary">
         &copy; 2025 Praful Gahlot. All rights reserved.

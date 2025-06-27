@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import {Tilt} from "react-tilt";
+import TiltWrapper from "../constants/TiltWrapper";
 
 import { styles } from "../styles";
 import { MenCanvas } from "./canvas";
@@ -171,7 +171,7 @@ const Contact = () => {
               <p className="text-red-500 text-lg">{errors.message}</p>
             )}
           </label>
-          <Tilt
+          <TiltWrapper
             options={{
               max: 20,
               scale: 1,
@@ -179,14 +179,13 @@ const Contact = () => {
             }}
             className="flex justify-end"
           >
-            {" "}
             <button
               type="submit"
               className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
             >
               {loading ? "Sending..." : "Send"}
             </button>
-          </Tilt>
+          </TiltWrapper>
         </form>
       </motion.div>
 
