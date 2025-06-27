@@ -31,7 +31,7 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 import eye from './eye.png';
-import basify from './company/basify.png'; // or .svg, .webp etc.
+import basify from './company/Basify.png'; // or .svg, .webp etc.
 export {
   logo,
   backend,
