@@ -1,5 +1,7 @@
 /* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   mode: "jit",
@@ -18,9 +20,13 @@ module.exports = {
       },
       screens: {
         xs: "450px",
+        ...defaultTheme.screens, // Restores sm, md, lg, xl, etc.
       },
       backgroundImage: {
-        "hero-pattern": "url('/src/assets/herobg.png')",
+        "hero-pattern": "url('./assets/herobg.png')", // Fixed relative path
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"], // Optional: enables `font-poppins` class
       },
     },
   },

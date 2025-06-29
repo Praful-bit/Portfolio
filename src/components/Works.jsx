@@ -100,7 +100,7 @@ const Works = () => {
 
           <div className="w-full flex">
             <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
-              {worksText}
+              worksText
             </p>
           </div>
         </>
