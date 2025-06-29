@@ -1,15 +1,11 @@
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  @apply max-w-[1280px] mx-auto p-8 text-center;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  @apply h-24 p-6 transition-filter duration-300;
   will-change: filter;
-  transition: filter 300ms;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
@@ -34,7 +30,7 @@
 }
 
 .card {
-  padding: 2em;
+  @apply p-8;
 }
 
 .read-the-docs {

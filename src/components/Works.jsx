@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import TiltWrapper from "../constants/TiltWrapper";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { github } from "../assets";
-import {eye} from '../assets'
+import { github, eye } from "../assets";
 import { SectionWrapper } from "../hoc";
-import { projects,  } from "../constants";
+import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
 const ProjectCard = ({
@@ -26,13 +25,13 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
+        className="bg-tertiary p-5 rounded-2xl w-full sm:w-[300px] md:w-[350px] lg:w-[360px]"
       >
         <div className="relative w-full h-[230px]">
           <img
             src={image}
             alt="project_image"
-            className="w-full h-full object-fit rounded-2xl"
+            className="w-full h-full object-cover rounded-2xl"
           />
         </div>
 
@@ -67,10 +66,7 @@ const ProjectCard = ({
 
         <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <p
-              key={`${name}-${tag.name}`}
-              className={`text-[14px] ${tag.color}`}
-            >
+            <p key={`${name}-${tag.name}`} className={`text-[14px] ${tag.color}`}>
               #{tag.name}
             </p>
           ))}
@@ -81,48 +77,22 @@ const ProjectCard = ({
 };
 
 const Works = () => {
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 1024);
-
-  useEffect(() => {
-    const handleResize = () => setIsSmallScreen(window.innerWidth < 1024);
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
   return (
     <>
-      {isSmallScreen ? (
-        <>
-          <div>
-            <p className={`${styles.sectionSubText} `}>My work</p>
-            <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
-          </div>
+      <motion.div variants={textVariant()} className="text-center lg:text-left">
+        <p className={styles.sectionSubText}>My work</p>
+        <h2 className={styles.sectionHeadText}>Projects.</h2>
+      </motion.div>
 
-          <div className="w-full flex">
-            <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
-              worksText
-            </p>
-          </div>
-        </>
-      ) : (
-        <>
-          <motion.div variants={textVariant()}>
-            <p className={`${styles.sectionSubText} `}>My work</p>
-            <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
-          </motion.div>
+      <motion.p
+        variants={fadeIn("", "", 0.1, 1)}
+        className="mt-3 text-secondary text-[17px] max-w-3xl mx-auto lg:mx-0 leading-[30px] text-center lg:text-left"
+      >
+        Here are some of the projects I’ve built, demonstrating my experience in
+        frontend development and problem-solving.
+      </motion.p>
 
-          <div className="w-full flex">
-            <motion.p
-              variants={fadeIn("", "", 0.1, 1)}
-              className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
-            >
-              {/* {worksText} */}
-            </motion.p>
-          </div>
-        </>
-      )}
-
-      <div className="mt-20 flex flex-wrap gap-7">
+      <div className="mt-20 flex flex-wrap justify-center gap-7">
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}

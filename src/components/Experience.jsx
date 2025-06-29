@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import { motion } from "framer-motion";
-
 import "react-vertical-timeline-component/style.min.css";
 
 import { styles } from "../styles";
@@ -15,16 +14,13 @@ import { textVariant } from "../utils/motion";
 const ExperienceCard = ({ experience }) => {
   return (
     <VerticalTimelineElement
-      contentStyle={{
-        background: "#1d1836",
-        color: "#fff",
-      }}
+      contentStyle={{ background: "#1d1836", color: "#fff" }}
       contentArrowStyle={{ borderRight: "7px solid  #232631" }}
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
         <div
-          onClick={() => window.open(experience.company_link, "basify.org")}
+          onClick={() => window.open(experience.company_link, "_blank")}
           className="flex justify-center items-center w-full h-full cursor-pointer"
         >
           <img
@@ -61,44 +57,17 @@ const ExperienceCard = ({ experience }) => {
 };
 
 const Experience = () => {
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 1024);
-
-  useEffect(() => {
-    const handleResize = () => setIsSmallScreen(window.innerWidth < 1024);
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
   return (
     <>
-      {isSmallScreen ? (
-        <div>
-          {" "}
-          <p className={`${styles.sectionSubText} text-center`}>
-            What I have done so far
-          </p>
-          <h2 className={`${styles.sectionHeadText} text-center`}>
-            Work Experience.
-          </h2>
-        </div>
-      ) : (
-        <motion.div variants={textVariant()}>
-          <p className={`${styles.sectionSubText} text-center`}>
-            What I have done so far
-          </p>
-          <h2 className={`${styles.sectionHeadText} text-center`}>
-            Work Experience.
-          </h2>
-        </motion.div>
-      )}
+      <motion.div variants={textVariant()} className="text-center">
+        <p className={styles.sectionSubText}>What I have done so far</p>
+        <h2 className={styles.sectionHeadText}>Work Experience.</h2>
+      </motion.div>
 
-      <div className="mt-20 flex flex-col">
+      <div className="mt-20 flex flex-col px-4 sm:px-6 md:px-10">
         <VerticalTimeline>
           {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={`experience-${index}`}
-              experience={experience}
-            />
+            <ExperienceCard key={`experience-${index}`} experience={experience} />
           ))}
         </VerticalTimeline>
       </div>
